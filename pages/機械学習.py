@@ -19,7 +19,7 @@ plt.rcParams['axes.unicode_minus'] = False
 
 #実行させるには（streamlit run C:\ウェブ企業\開発コード\WUM\pages\機械学習.py
 
-image = Image.open("../Click Click LOGO 1.jpg")
+image = Image.open("./Click Click LOGO 1.jpg")
 st.set_page_config(
     page_title = "機械学習",
     page_icon = image,
