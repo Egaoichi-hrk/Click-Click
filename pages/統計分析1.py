@@ -7,7 +7,7 @@ import scipy.stats as stats
 
 #実行させるには（streamlit run C:\ウェブ企業\開発コード\WUM\pages\統計分析1.py）
 
-image = Image.open("../Click Click LOGO 1.jpg")
+image = Image.open("./Click Click LOGO 1.jpg")
 st.set_page_config(
     page_title = "統計分析",
     page_icon = image,
