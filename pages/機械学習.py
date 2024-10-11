@@ -6,10 +6,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import matplotlib.pyplot as plt
-import japanize_matplotlib
 from PIL import Image
 from statsmodels.tsa.arima.model import ARIMA
 from streamlit_extras.stylable_container import stylable_container
+from matplotlib import font_manager
+
+font_path = 'NotoSansJP-Medium.ttf'
+font_prop = font_manager.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = font_prop.get_name()
+plt.rcParams['axes.unicode_minus'] = False 
 
 
 #実行させるには（streamlit run C:\ウェブ企業\開発コード\WUM\pages\機械学習.py
@@ -158,12 +163,12 @@ with st.form(key='profile_form'):
 
                     # 結果をプロット
                     plt.figure(figsize=(10, 6))
-                    plt.scatter(X, y, color='blue', label='データポイント')
-                    plt.plot(X, y_pred, color='red', label='回帰直線')
+                    plt.scatter(X, y, color='blue', label='データポイント', fontproperties=font_prop)
+                    plt.plot(X, y_pred, color='red', label='回帰直線', fontproperties=font_prop)
                     plt.xlabel('X')
                     plt.ylabel('y')
                     plt.legend()
-                    plt.title("回帰分析のプロット")
+                    plt.title("回帰分析のプロット", fontproperties=font_prop)
 
                     st.pyplot(plt)
                 elif name =='重回帰分析':
@@ -194,9 +199,9 @@ with st.form(key='profile_form'):
                     plt.figure(figsize=(10, 6))
                     plt.scatter(y, y_pred, color='blue')
                     plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--', lw=2)  # 予測値と実測値が完全に一致する直線
-                    plt.xlabel('実測値 (y)')
-                    plt.ylabel('予測値 (y_pred)')
-                    plt.title('実測値 vs. 予測値')
+                    plt.xlabel('実測値 (y)', fontproperties=font_prop)
+                    plt.ylabel('予測値 (y_pred)', fontproperties=font_prop)
+                    plt.title('実測値 vs. 予測値', fontproperties=font_prop)
                     st.pyplot(plt)
 
 st.subheader("その他分析")
@@ -236,17 +241,17 @@ with st.form(key='profile_form1'):
 
                     # モデルの精度を計算
                     accuracy = accuracy_score(y_test, y_pred)
-                    print(f'Accuracy: {accuracy:.2f}')
+                    st.write(f'Accuracy: {accuracy:.2f}')
 
                     # 混同行列の表示
                     cm = confusion_matrix(y_test, y_pred)
-                    print('Confusion Matrix:')
-                    print(cm)
+                    st.write('Confusion Matrix:')
+                    st.write(cm)
 
                     # 分類レポートの表示
                     report = classification_report(y_test, y_pred)
-                    print('Classification Report:')
-                    print(report)
+                    st.write('Classification Report:')
+                    st.write(report)
 
 
 
@@ -256,7 +261,7 @@ st.markdown(
     <br><br><br>
     """
 ,unsafe_allow_html=True)
-
+st.write('決定木分析,階層型クラスタリング, K-平均クラスタリングにつきましてはただいま準備中です')
 st.write('・csvの読み込みを行う際はあらかじめ、Excelなどを用いて、データの加工をしてもらう必要があります。')
 st.write('・不具合等ございましたらお手数ですがTOPページ内のお問い合わせフォームにてお願いします。')
 
