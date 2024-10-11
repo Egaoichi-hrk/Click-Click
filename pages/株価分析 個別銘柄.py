@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import japanize_matplotlib
 from PIL import Image
 from streamlit_extras.stylable_container import stylable_container
 import yfinance as yf
