@@ -204,9 +204,9 @@ with st.form(key='profile_form'):
                 plt.plot(x, pdf, label=f'μ={mu}, σ={sigma}', color='blue')
 
                 # タイトルとラベルを設定
-                plt.title('正規分布', fontsize=20)
+                plt.title('正規分布', fontsize=20, fontproperties=font_prop)
                 plt.xlabel('X', fontsize=14)
-                plt.ylabel('確率密度', fontsize=14)
+                plt.ylabel('確率密度', fontsize=14, fontproperties=font_prop)
 
                 # グリッドを表示
                 plt.grid(True)
