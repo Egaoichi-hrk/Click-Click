@@ -4,7 +4,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
 import scipy.stats as stats
+from matplotlib import font_manager
 
+font_path = 'NotoSansJP-Medium.ttf'
+font_prop = font_manager.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = font_prop.get_name()
+plt.rcParams['axes.unicode_minus'] = False 
 #実行させるには（streamlit run C:\ウェブ企業\開発コード\WUM\pages\統計分析1.py）
 
 image = Image.open("./Click Click LOGO 1.jpg")
