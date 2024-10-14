@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from streamlit_extras.stylable_container import stylable_container
 import yfinance as yf
-from pandas_datareader import data
 from statsmodels.tsa.arima.model import ARIMA
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
