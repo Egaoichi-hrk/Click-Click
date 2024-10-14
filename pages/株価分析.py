@@ -12,7 +12,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
 #実行させるにはstreamlit run C:\ウェブ企業\開発コード\WUM\pages\株価分析.py
 
-image = Image.open("../Click Click LOGO 1.jpg")
+image = Image.open("./Click Click LOGO 1.jpg")
 st.set_page_config(
     page_title = "株価分析",
     page_icon = image,
