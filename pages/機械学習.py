@@ -143,40 +143,50 @@ with st.form(key='profile_form'):
                 if name == '単回帰分析':
                     st.title("単回帰分析の結果")
 
-                    # データを作成
-                    X = selected_data.iloc[:, 0].values.reshape(-1, 1)
-                    y = selected_data.iloc[:, 1].values
+                    # 列数を確認
+                    if selected_data.shape[1] != 2:
+                        st.error("単回帰分析を行うには、説明変数（x）と被説明変数（y）の2つの列を選択してください。")
+                    else:
+                        try:
+                            # データを作成
+                            X = selected_data.iloc[:, 0].values.reshape(-1, 1)
+                            y = selected_data.iloc[:, 1].values
 
-                    # 回帰モデルを作成
-                    model = LinearRegression()
-                    model.fit(X, y)
+                            # 回帰モデルを作成
+                            model = LinearRegression()
+                            model.fit(X, y)
 
-                    # 回帰係数と切片
-                    slope = model.coef_[0]
-                    intercept = model.intercept_
+                            # 回帰係数と切片
+                            slope = model.coef_[0]
+                            intercept = model.intercept_
 
-                    st.write(f"回帰係数: {slope}")
-                    st.write(f"切片: {intercept}")
+                            st.write(f"回帰係数 (slope): {slope}")
+                            st.write(f"切片 (intercept): {intercept}")
 
-                    # 予測
-                    y_pred = model.predict(X)
+                            # 予測
+                            y_pred = model.predict(X)
 
-                    # 結果をプロット
-                    plt.figure(figsize=(10, 6))
-                    plt.scatter(X, y, color='blue', label='データポイント', fontproperties=font_prop)
-                    plt.plot(X, y_pred, color='red', label='回帰直線', fontproperties=font_prop)
-                    plt.xlabel('X')
-                    plt.ylabel('y')
-                    plt.legend()
-                    plt.title("回帰分析のプロット", fontproperties=font_prop)
+                            # フォントプロパティの設定（必要な場合）
+                            # font_prop = FontProperties(fname='/path/to/your/font.ttf', size=12)
 
-                    st.pyplot(plt)
+                            # 結果をプロット
+                            plt.figure(figsize=(10, 6))
+                            plt.scatter(X, y, color='blue', label='データポイント',fontproperties)  # fontpropertiesは削除
+                            plt.plot(X, y_pred, color='red', label='回帰直線',fontproperties)
+                            plt.xlabel('X')  # fontproperties=font_prop を追加する場合
+                            plt.ylabel('y')  # fontproperties=font_prop を追加する場合
+                            plt.legend()
+                            plt.title("単回帰分析のプロット",fontproperties)  # fontproperties=font_prop を追加する場合
+
+                            st.pyplot(plt)
+                        except Exception as e:
+                            st.error(f"回帰分析中にエラーが発生しました: {e}")
                 elif name =='重回帰分析':
 
                     st.title("重回帰分析の結果")
 
 
-                    st.text("1つ目の変数を被説明変数（ｙ）、二つ目以降の変数を説明変数（ｘ）")
+                   
                     # データを作成 (複数の説明変数)
                     y = selected_data.iloc[:, 0].values  # 1つ目の列を被説明変数（y）として使用
                     X = selected_data.iloc[:, 1:].values  # 2つ目以降の列を説明変数（X）として使用
@@ -203,7 +213,7 @@ with st.form(key='profile_form'):
                     plt.ylabel('予測値 (y_pred)', fontproperties=font_prop)
                     plt.title('実測値 vs. 予測値', fontproperties=font_prop)
                     st.pyplot(plt)
-
+ 
 st.subheader("その他分析")
 with st.form(key='profile_form1'):
     uploaded_file = st.file_uploader("csvファイルのアップロード", type="csv")
