@@ -172,7 +172,7 @@ with st.form(key='profile_form'):
                             # 結果をプロット
                             plt.figure(figsize=(10, 6))
                             plt.scatter(X, y, color='blue', label='データポイント')  # fontpropertiesは削除
-                            plt.plot(X, y_pred, color='red', label='回帰直線',fontproperties)
+                            plt.plot(X, y_pred, color='red', label='回帰直線')
                             plt.xlabel('X')  # fontproperties=font_prop を追加する場合
                             plt.ylabel('y')  # fontproperties=font_prop を追加する場合
                             plt.legend()
