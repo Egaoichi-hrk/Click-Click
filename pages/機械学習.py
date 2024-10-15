@@ -176,7 +176,7 @@ with st.form(key='profile_form'):
                             plt.xlabel('X')  # fontproperties=font_prop を追加する場合
                             plt.ylabel('y')  # fontproperties=font_prop を追加する場合
                             plt.legend()
-                            plt.title("単回帰分析のプロット",fontproperties)  # fontproperties=font_prop を追加する場合
+                            plt.title("単回帰分析のプロット")  # fontproperties=font_prop を追加する場合
 
                             st.pyplot(plt)
                         except Exception as e:
