@@ -255,8 +255,8 @@ with st.form(key='profile_form1'):
 
                         # ゴールデンクロスを確認する条件
                         data['signal'] = 0.0
-                        data['signal'][short_window:] = np.where(
-                            data['short_mavg'][short_window:] > data['long_mavg'][short_window:], 1.0, 0.0)
+                        data.loc[short_window:, 'signal'] = np.where(
+				data.loc[short_window:, 'short_mavg'] > data.loc[short_window:, 'long_mavg'], 1.0, 0.0)
                         data['positions'] = data['signal'].diff()
 
                         # ゴールデンクロスのポイントをプロット
