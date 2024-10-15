@@ -240,7 +240,7 @@ with st.form(key='profile_form1'):
             if kinds:
                 try:
                     # データを取得
-                    df = data.DataReader(kinds, 'stooq', start=start, end=end)
+                    df = yf.download(tickers=kinds, start=start, end=end)
                     st.write(df[[name]])  # ユーザーが選んだ値を表示
                     if bunseki == 'ゴールデンクロスの検出':
                         # データがSeriesなので、DataFrameに変換
